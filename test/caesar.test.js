@@ -19,9 +19,14 @@ describe("caesar", () => {
      const expected = "abc";
      expect(actual).to.eql(expected);
    })
+   it("if necessary, output should wrap around beginning of alphabet", () => {
+    const actual = caesar("abc", -3);
+    const expected = "xyz";
+    expect(actual).to.eql(expected);
+  })
   it("should maintain spaces", () => {
     const actual = caesar("hi to you", 3);
-    const expected = "kl wl brx";
+    const expected = "kl wr brx";
     expect(actual).to.equal(expected)
   })
 })

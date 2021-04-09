@@ -8,47 +8,31 @@ const caesarModule = (function () {
     let alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
     
     function caesar(input, shift, encode = true) {
-        if (shift === 0 || shift > 25 || shift < -25) 
-        return false
-      input = input.toLowerCase();
-// split input to isolate each character
-      let letters = input.split("");
-      console.log(letters)      
-// convert each character into a number
-  // need to adjust for 25 = z, 26 = a
-     let numberOfLetter = [];
-     letters.map(letter =>{
-       return numberOfLetter.push(alphabet.indexOf(letter))
-           })
-      console.log(numberOfLetter)
-      
-    
-  // shift each number according to shift number
-    
-    let shifted = numberOfLetter.map(index => {
-      if (index < 0) index = //blank space; 
-       return (index = index + shift);
-    })
-    console.log(shifted)
-    
-  // convert number back into character
-  let encodedLetters = []
-      shifted.map(index => {
-       if (index === /*blank space*/) {encodedLetters.push(" ")};
-      
-      return (encodedLetters.push(alphabet[index]))
+        if (!shift || shift === 0 || shift > 25 || shift < -25) 
+        return false;
+        input = input.toLowerCase();
+        let final = []
+
+        for (let i = 0; i < input.length; i++) {
+          let letter = input[i];
+          let position = alphabet.indexOf(letter);
+          
+          if (position < 0) {
+            final.push(letter);
             
-          })
-      console.log(encodedLetters)
-     
-  // join back to string    
-      let final = encodedLetters.join("")
-      
-   console.log(final)
-     return final
-    
+          }
+          else {
+            let newPosition = (position + shift);
+            if(newPosition > 25){ newPosition = newPosition - 26};
+            if(newPosition < 0){ newPosition = newPosition + 26};
+            final.push(alphabet[newPosition]);
+          }
+        }
+
+    return final.join("")
     }
   
+ 
     return {
       caesar,
     };
