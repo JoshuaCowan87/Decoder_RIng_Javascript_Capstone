@@ -29,4 +29,42 @@ describe("caesar", () => {
     const expected = "kl wr brx";
     expect(actual).to.equal(expected)
   })
+
+  it("test 1", () => {
+    const actual = caesar("thinkful", 3);
+    const expected = "wklqnixo";
+    expect(actual).to.eql(expected)
+})
+it("test 2", () => {
+    const actual = caesar("thinkful", -3);
+    const expected = "qefkhcri";
+    expect(actual).to.eql(expected)
+})
+it("test 3", () => {
+    const actual = caesar("wklqnixo", 3, false);
+    const expected = "thinkful";
+    expect(actual).to.eql(expected)
+})
+it("test 4", () => {
+    const actual = caesar("This is a secret message!", 8);
+    const expected = "bpqa qa i amkzmb umaaiom!";
+    expect(actual).to.eql(expected)
+})
+it("test 5", () => {
+    const actual = caesar("BPQA qa I amkzmb umaaiom!", 8, false);
+    const expected = "this is a secret message!";
+    expect(actual).to.eql(expected)
+})
+it("test 6", () => {
+    const actual = caesar("thinkful");
+    expect(actual).to.eql(false)
+})
+it("test 7", () => {
+    const actual = caesar("thinkful", 99);
+    expect(actual).to.eql(false)
+})
+it("test 8", () => {
+    const actual = caesar("thinkful", -26);
+    expect(actual).to.eql(false)
+})
 })

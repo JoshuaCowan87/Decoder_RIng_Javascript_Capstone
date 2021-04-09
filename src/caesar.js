@@ -22,10 +22,17 @@ const caesarModule = (function () {
             
           }
           else {
-            let newPosition = (position + shift);
+            if(encode) {
+              let newPosition = (position + shift)
+              if(newPosition > 25){ newPosition = newPosition - 26};
+              if(newPosition < 0){ newPosition = newPosition + 26};
+              final.push(alphabet[newPosition]);}
+            else {
+            let newPosition = (position - shift);
             if(newPosition > 25){ newPosition = newPosition - 26};
             if(newPosition < 0){ newPosition = newPosition + 26};
             final.push(alphabet[newPosition]);
+            }
           }
         }
 
